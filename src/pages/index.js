@@ -164,7 +164,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
       <TableEquipos equipos={equipos} onFilterActive={setIsFilterActive} onFilteredNames={setFilteredEquiposNames} />
     </main>
   );
