@@ -13,7 +13,10 @@
     "@emotion/styled": "^11.13.0",
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.0",
+    "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
+    "axios": "^1.7.7",
+    "core-js": "^3.38.1",
     "axios": "^1.7.7",
     "core-js": "^3.38.1",
     "next": "14.2.11",
@@ -24,6 +27,7 @@
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
     "@babel/preset-env": "^7.25.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.11",

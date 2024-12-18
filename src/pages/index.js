@@ -81,6 +81,7 @@ export default function Home() {
   return (
     <main className={`flex min-h-screen flex-col items-center justify-start p-6 ${inter.className}`}>
       <TopBar appname="AC Smart 5" />
+      <TopBar appname="AC Smart 5" />
       <header className="w-full flex items-center mt-10">
         <div className={`${isMobile ? 'flex' : 'flex-1'}`}>
           <Image src="/images/logo.png" alt="Logo" width={isMobile ? 90 : 130} height={isMobile ? 90 : 130} />
