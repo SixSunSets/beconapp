@@ -17,6 +17,8 @@ export default function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [openModal, setOpenModal] = useState(false);
   const [datos, setDatos] = useState([]);
+  const [selectedData, setSelectedData] = useState([]); // Tabla <- Callback
+  console.log(selectedData)
   /*
   useEffect(() => {
     socket.on("actualizar_equipo", (data) => {
@@ -101,10 +103,27 @@ export default function Home() {
           Control Grupal
         </Button>
       </div>
-      <Tabla datos={datos}/>
-      {/* Modal */}
-      {/* Modal: Maneja el estado selected, pasarlo a contexto global */}
-      
+      <Tabla datos={datos} onSelectionChange={setSelectedData}/>
+      {/* Modal de Control Grupal */}
+      <Dialog open={openModal} onClose={handleCloseModal} fullWidth maxWidth="sm">
+        <DialogTitle>Control Grupal</DialogTitle>
+        <DialogContent>
+          {selectedData.map((row) => (
+            <div key={row.row_id} className="my-4">
+              <p><strong>Sede:</strong> {row.SEDE}</p>
+              <p><strong>Marca:</strong> {row.MARCA}</p>
+              <p><strong>Nombre:</strong> {row.NOMBRE}</p>
+              {/* Agrega controles aquí según lo que necesites */}
+            </div>
+          ))}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Cancelar</Button>
+          <Button variant="contained" onClick={handleCommand}>
+            Comandar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </main>
   );
 }

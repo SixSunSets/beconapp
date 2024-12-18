@@ -14,7 +14,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 
-const Tabla = ({ datos = [] }) => {
+const Tabla = ({ datos = [], onSelectionChange }) => {
   const [selected, setSelected] = useState([]);
   const [filters, setFilters] = useState({
     row_id: "",
@@ -47,6 +47,7 @@ const Tabla = ({ datos = [] }) => {
       );
     }
     setSelected(newSelected);
+    onSelectionChange(newSelected.map((id) => datos.find((row) => row.row_id === id))); // Callback -> index
   };
 
   const handleFilterChange = (event, column) => {
