@@ -176,7 +176,7 @@ const Tabla = ({ datos = [], onSelectionChange }) => {
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell className="table-column">Propiedades</TableCell>
+                      <TableCell>Propiedades</TableCell>
                       <TableCell>Valor Actual</TableCell>
                       <TableCell>Controlar Equipo</TableCell>
                     </TableRow>
