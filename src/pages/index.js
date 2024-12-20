@@ -123,11 +123,124 @@ export default function Home() {
           variant="contained"
           size="large"
           onClick={() => handleOpenModal(datos)}
+          disabled={selectedData.length === 0}
         >
           Control Grupal
         </Button>
       </div>
       <Tabla datos={datos} onSelectionChange={setSelectedData} />
+      {/* Modal de Control Grupal */}
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        fullWidth
+        maxWidth="md"
+      >
+        <DialogTitle>
+          Controlar Equipos ({selectedData.length} seleccionados)
+        </DialogTitle>
+        <DialogContent>
+          <p>
+            <strong>Equipos seleccionados:</strong>
+          </p>
+          <TableContainer>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Nombre</TableCell>
+                  <TableCell>Sede</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {selectedData.map((row) => (
+                  <TableRow key={row.row_id}>
+                    <TableCell>{row.row_id}</TableCell>
+                    <TableCell>{row.NOMBRE}</TableCell>
+                    <TableCell>{row.SEDE}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className="mt-4">
+            <TableContainer>
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Propiedades</TableCell>
+                    <TableCell>Controlar Equipo</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>ESTADO</TableCell>
+                    <TableCell>
+                      <TextField
+                        select
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        defaultValue=""
+                        SelectProps={{
+                          native: true,
+                        }}
+                      >
+                        <option value="" disabled>
+                          Seleccione
+                        </option>
+                        <option value="Encendido">Encendido</option>
+                        <option value="Apagado">Apagado</option>
+                      </TextField>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>VELOCIDAD</TableCell>
+                    <TableCell>
+                      <TextField
+                        select
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        defaultValue=""
+                        SelectProps={{
+                          native: true,
+                        }}
+                      >
+                        <option value="" disabled>
+                          Seleccione
+                        </option>
+                        <option value="Baja">Baja</option>
+                        <option value="Media">Media</option>
+                        <option value="Alta">Alta</option>
+                      </TextField>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>SETPOINT</TableCell>
+                    <TableCell>
+                      <TextField
+                        type="number"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        defaultValue=""
+                        inputProps={{ step: 0.5, min: 0 }}
+                      />
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Cancelar</Button>
+          <Button variant="contained" onClick={handleCommand}>
+            Comandar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </main>
   );
 }
